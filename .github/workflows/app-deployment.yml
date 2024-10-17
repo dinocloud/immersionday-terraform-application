@@ -74,12 +74,12 @@ jobs:
         run: terraform plan -input=false -no-color -var-file=config/environments/${{ inputs.environment }}.tfvars
 
       - name: Terraform apply
-        run: terraform apply -auto-approve
+        run: terraform apply -auto-approve -var-file=config/environments/${{ inputs.environment }}.tfvars
 
   changes-app:
     runs-on: ubuntu-latest
     outputs:
-      change: ${{ steps.app.outputs.src }}
+      change: ${{ steps.changesapp.outputs.src }}
     steps:
       - uses: actions/checkout@v4
       - uses: dorny/paths-filter@v3
