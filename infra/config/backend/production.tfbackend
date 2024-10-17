@@ -1,0 +1,6 @@
+bucket  = "tooling-tf-sandbox"
+key     = "tooling/TF/immersionday/application/production/terraform.tfstate"
+region  = "us-east-1"
+
+
+// local init: terraform init -backend-config=./config/backend/production.tfbackend
