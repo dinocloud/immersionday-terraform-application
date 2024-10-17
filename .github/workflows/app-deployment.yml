@@ -39,7 +39,7 @@ jobs:
             infra:
               - 'infra/**'    
   infra-deploy:
-    name: Apply
+    name: Apply terraform
     runs-on: ubuntu-latest
     needs: changes-infra
     environment: ${{ inputs.environment }}
@@ -89,7 +89,7 @@ jobs:
             src:
               - 'src/**'   
   app-deploy:
-    name: deployapp
+    name: deploy appplication
     runs-on: ubuntu-latest
     needs: changes-app
     environment: ${{ inputs.environment }}
@@ -128,7 +128,7 @@ jobs:
    
       - name: Download task definition
         run: |
-          aws ecs describe-task-definition --task-definition $TASK_DEFINITION --query taskDefinition > task-definition.json
+          aws ecs describe-task-definition --task-definition $TASK_DEFINITION --query taskDefinition > ./src/task-definition.json
    
       - name: Fill in the new image ID in the Amazon ECS task definition
         id: task-def
