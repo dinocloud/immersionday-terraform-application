@@ -63,7 +63,7 @@ jobs:
         run: terraform apply -auto-approve -var-file=config/environments/${{ inputs.environment }}.tfvars
 
   app-deploy:
-    name: deploy appplication
+    name: Deploy application
     runs-on: ubuntu-latest
     needs: infra-deploy
     environment: ${{ inputs.environment }}
