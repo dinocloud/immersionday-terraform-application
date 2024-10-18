@@ -129,6 +129,8 @@ jobs:
       - name: Download task definition
         run: |
           aws ecs describe-task-definition --task-definition $TASK_DEFINITION --query taskDefinition > ./src/task-definition.json
+          pwd
+          ls -lash
    
       - name: Fill in the new image ID in the Amazon ECS task definition
         id: task-def
