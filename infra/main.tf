@@ -44,7 +44,9 @@ module "ecs_service" {
 
   cpu    = 1024
   memory = 4096
-  # Enables ECS Exec
+  autoscaling_min_capacity = 2
+  desired_count = 3
+  autoscaling_max_capacity = 4
   enable_execute_command = true
 
   # Container definition(s)
@@ -166,9 +168,6 @@ module "alb" {
         timeout             = 5
         unhealthy_threshold = 2
       }
-
-      # There's nothing to attach here in this definition. Instead,
-      # ECS will attach the IPs of the tasks to this target group
       create_attachment = false
     }
   }
